@@ -19,6 +19,9 @@ const information = (props) => {
                 {makeArrayFromInputField.map(elementType => {
                     return (
                         <Input
+                            touched={elementType.config.touched}
+                            shouldValidate={elementType.config.validation}
+                            errorMsg={elementType.config.msg}
                             invalid={!elementType.config.valid}
                             changed={(event) => props.clicked(event, elementType.id)}
                             key={elementType.id}
@@ -28,9 +31,9 @@ const information = (props) => {
                         ></Input>
                     )
                 })}
-                <button onClick={props.clicked}>Enviar</button>
+                <button disabled={!props.formIsValid}>Enviar</button>
             </form>
-        </Section>
+        </Section >
     )
 }
 

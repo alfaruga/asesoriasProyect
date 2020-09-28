@@ -4,10 +4,14 @@ import classes from "./Input.module.scss";
 const input = (props) => {
 
     let inputElement = null;
+    let validationError = null;
     const inputClasses = [classes.inputElement];
 
-    if (props.invalid) {
+    if (props.touched && props.invalid && props.shouldValidate) {
         inputClasses.push(classes.Invalid)
+    }
+    if (props.touched && props.invalid) {
+        validationError = <p>{props.errorMsg}</p>;
     }
     switch (props.elementType) {
         case ("input"):
@@ -17,9 +21,7 @@ const input = (props) => {
             inputElement = <textarea className={inputClasses.join(" ")} onChange={props.changed} {...props.elementConfig} value={props.value} />;
             break;
         case ("select"):
-            inputElement = <select className={inputClasses.join(" ")} onChange={props.changed}
-                {...props.elementConfig}
-                value={props.value} >
+            inputElement = <select className={inputClasses.join(" ")} onChange={props.changed} {...props.elementConfig} value={props.value} >
                 {props.elementConfig.options.map(option => {
                     return (
                         <option
@@ -38,7 +40,7 @@ const input = (props) => {
     return (
         <div>
             <label >
-                {inputElement}
+                {inputElement}{validationError}
             </label>
         </div>
     )

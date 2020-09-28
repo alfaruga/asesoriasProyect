@@ -15,6 +15,7 @@ class Homepage extends Component {
             { title: "Asesores para ingreso a preparatorioa y facultad ", src: "https://firebasestorage.googleapis.com/v0/b/alexis-ruiz-asesorias.appspot.com/o/pexels-thisisengineering-3862130.jpg?alt=media&token=867c50b9-74c0-498e-980a-65cec814e8ff" },
             { title: "Profesores de Inglés", src: "https://firebasestorage.googleapis.com/v0/b/alexis-ruiz-asesorias.appspot.com/o/invonto-m4n7lOvFqog-unsplash.jpg?alt=media&token=bc54f243-a174-43f8-8bff-4e36bafed920" }
         ],
+        formIsValid: false,
         informationQuery: {
             name: {
                 elementType: "input",
@@ -26,7 +27,9 @@ class Homepage extends Component {
                 validation: {
                     required: true
                 },
-                valid: false
+                valid: false,
+                touched: false,
+                msg: "Introduce un nombre válido"
             },
             phone: {
                 elementType: "input",
@@ -39,7 +42,10 @@ class Homepage extends Component {
                 validation: {
                     required: true,
                 },
-                valid: false
+                valid: false,
+                touched: false,
+                msg: "Número de teléfono a 10 dígitos, p. ej. 9876543210"
+
             },
             email: {
                 elementType: "input",
@@ -51,7 +57,10 @@ class Homepage extends Component {
                 validation: {
                     required: true,
                 },
-                valid: false
+                valid: false,
+                touched: false,
+                msg: "Introduce un correo válido (ejemplo@ejemplo.com)"
+
             },
             sale: {
                 elementType: "select",
@@ -62,12 +71,12 @@ class Homepage extends Component {
                         { value: "Inglés", displayValue: "Tutorías en inglés" },
                         { value: "Otro", displayValue: "Otro" }
                     ]
-                }, value: ""
-                ,validation: {
-                    required: true,
-                    minLength: 10,
-                    maxLength: 500
-                }
+                }, value: "Asesoria exámen de Ingreso",
+                valid: true,
+                touched: false,
+                msg: ""
+
+
             },
             question: {
                 elementType: "textArea",
@@ -78,10 +87,13 @@ class Homepage extends Component {
                 , value: "",
                 validation: {
                     required: true,
-                    minLength: 10,
+                    minLength: 1,
                     maxLength: 500
-                }
-            }
+                },
+                valid: false,
+                touched: false,
+                msg: "Brinda más información para poder ayudarte"
+            },
         }
 
     }
@@ -111,13 +123,25 @@ class Homepage extends Component {
         updatedQuestionElement.value = event.target.value;
 
         //Validation
-        updatedQuestionElement.valid = this.checkValidation(updatedQuestionElement.value, updatedQuestionElement.validation)
+        if (updatedQuestionElement.validation) {
+            updatedQuestionElement.valid = this.checkValidation(updatedQuestionElement.value, updatedQuestionElement.validation)
+        }
+        //Has been touched
+        updatedQuestionElement.touched = true;
 
+        //Check if form is full of valid data
+
+        let formIsValid = true;
+        for (let inputIdentifier in updatedQuestionForm) {
+            formIsValid = updatedQuestionForm[inputIdentifier].valid && formIsValid;
+        }
+        console.log(formIsValid)
+        //Update state
 
         updatedQuestionForm[inputId] = updatedQuestionElement;
-        console.log(updatedQuestionElement)
         this.setState({
             informationQuery: updatedQuestionForm,
+            formIsValid: formIsValid
         })
     }
     submitQuestionHandler = (event) => {
@@ -133,10 +157,8 @@ class Homepage extends Component {
             .catch(error => {
                 alert("error")
             })
-
-
-
     }
+
     render() {
         return (
             <Aux>
@@ -145,6 +167,7 @@ class Homepage extends Component {
                 <Features features={this.state.features} />
                 <Advantages />
                 <Information
+                    formIsValid={this.state.formIsValid}
                     inputField={this.state.informationQuery}
                     clicked={(event, inputId) => this.informationChangeHandler(event, inputId)}
                     send={this.submitQuestionHandler} />
