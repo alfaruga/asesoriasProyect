@@ -5,7 +5,8 @@ import Aux from "../../hoc/Aux";
 import Features from "../Features/Features";
 import Advantages from "../Advantages/Advantages";
 import Information from "../Information/Information";
-import information from "../Information/Information";
+import axios from "../../axios-dudas";
+
 class Homepage extends Component {
     state = {
         sections: ["#Welcome", "#Features", "#How", "#Contact"],
@@ -21,16 +22,24 @@ class Homepage extends Component {
                     type: "text",
                     placeholder: "Ejemplo Sr. (Sr.a) Pérez"
                 }
-                , value: ""
+                , value: "",
+                validation: {
+                    required: true
+                },
+                valid: false
             },
             phone: {
                 elementType: "input",
                 elementConfig: {
                     type: "tel",
                     pattern: "[0-9]{10}",
-                    placeholder: "Teléfono o whatsapp"
+                    placeholder: "Teléfono o whatsapp a 10 dígitos"
                 }
-                , value: ""
+                , value: "",
+                validation: {
+                    required: true,
+                },
+                valid: false
             },
             email: {
                 elementType: "input",
@@ -38,7 +47,11 @@ class Homepage extends Component {
                     type: "email",
                     placeholder: "Correo electrónico de uso frecuente"
                 }
-                , value: ""
+                , value: "",
+                validation: {
+                    required: true,
+                },
+                valid: false
             },
             sale: {
                 elementType: "select",
@@ -50,6 +63,11 @@ class Homepage extends Component {
                         { value: "Otro", displayValue: "Otro" }
                     ]
                 }, value: ""
+                ,validation: {
+                    required: true,
+                    minLength: 10,
+                    maxLength: 500
+                }
             },
             question: {
                 elementType: "textArea",
@@ -57,23 +75,67 @@ class Homepage extends Component {
                     type: "text",
                     placeholder: "Compartenos tus dudas..."
                 }
-                , value: ""
+                , value: "",
+                validation: {
+                    required: true,
+                    minLength: 10,
+                    maxLength: 500
+                }
             }
         }
 
     }
+
+    checkValidation(value, rules) {
+        let isValid = true;
+
+        if (rules.required) {
+            isValid = value.trim() !== '' && isValid;
+        }
+        if (rules.minLength) {
+            isValid = value.length >= rules.minLength && isValid;
+        }
+        if (rules.maxLength) {
+            isValid = value.length <= rules.maxLength && isValid;
+        }
+
+        return isValid;
+
+    }
+
     informationChangeHandler = (event, inputId) => {
         const updatedQuestionForm = {
             ...this.state.informationQuery,
         }
-
         const updatedQuestionElement = { ...updatedQuestionForm[inputId] }
         updatedQuestionElement.value = event.target.value;
-        updatedQuestionForm[inputId] = updatedQuestionElement;
 
+        //Validation
+        updatedQuestionElement.valid = this.checkValidation(updatedQuestionElement.value, updatedQuestionElement.validation)
+
+
+        updatedQuestionForm[inputId] = updatedQuestionElement;
+        console.log(updatedQuestionElement)
         this.setState({
             informationQuery: updatedQuestionForm,
         })
+    }
+    submitQuestionHandler = (event) => {
+        event.preventDefault();
+        const questionData = {};
+        for (let elementId in this.state.informationQuery) {
+            questionData[elementId] = this.state.informationQuery[elementId].value;
+        }
+        axios.post('/preguntas.json', questionData)
+            .then(response => {
+                alert("done")
+            })
+            .catch(error => {
+                alert("error")
+            })
+
+
+
     }
     render() {
         return (
@@ -82,7 +144,10 @@ class Homepage extends Component {
                 <WelcomeSection />
                 <Features features={this.state.features} />
                 <Advantages />
-                <Information inputField={this.state.informationQuery} clicked={(event, inputId) => this.informationChangeHandler(event, inputId)} />
+                <Information
+                    inputField={this.state.informationQuery}
+                    clicked={(event, inputId) => this.informationChangeHandler(event, inputId)}
+                    send={this.submitQuestionHandler} />
             </Aux>
         )
     }

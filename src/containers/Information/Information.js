@@ -15,10 +15,11 @@ const information = (props) => {
             </h1>
             <hr />
             <h4>Ingresa tu duda junto con tus datos de contacto y en seguida te atenderemos</h4>
-            <form>
+            <form onSubmit={props.send}>
                 {makeArrayFromInputField.map(elementType => {
                     return (
                         <Input
+                            invalid={!elementType.config.valid}
                             changed={(event) => props.clicked(event, elementType.id)}
                             key={elementType.id}
                             elementType={elementType.config.elementType}
