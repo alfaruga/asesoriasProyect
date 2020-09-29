@@ -24,7 +24,7 @@ const Features = (props) => {
         "Asesorías en el idioma inglés por profesores certificados."];
 
     return (
-        <Section>
+        <Section id={"features"}>
             <h1>Nuestras especialidades</h1>
             {props.features.map((especialidad, index) => {
                 return (<Especialidad key={index} {...especialidad} >{descripciones[index]}</Especialidad>)

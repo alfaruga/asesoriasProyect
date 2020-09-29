@@ -4,7 +4,7 @@ import classes from "./Advantages.module.scss";
 
 const advantages = () => {
     return (
-        <Section className={classes.Advantages}>
+        <Section id={"adv"} className={classes.Advantages}>
             <div className={classes.AdvantageL} >
                 <img alt="" src="https://firebasestorage.googleapis.com/v0/b/alexis-ruiz-asesorias.appspot.com/o/pexels-julia-m-cameron-4144101.jpg?alt=media&token=2ce0cb81-ee50-445c-a9e0-05b0351407d5"></img>
                 <h1>Atención personalizada</h1>

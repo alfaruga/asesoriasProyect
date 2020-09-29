@@ -4,12 +4,15 @@ import Navbar from "../../components/UI/Navigation/navbar/navbar";
 import Aux from "../../hoc/Aux";
 import Features from "../Features/Features";
 import Advantages from "../Advantages/Advantages";
-import Information from "../Information/Information";
+import Footer from "../../components/UI/Footer/Footer";
+import FAQ from "../FAQ/FAQ";
 import axios from "../../axios-dudas";
+import Modal from "../../components/UI/Modal/Modal";
 
 class Homepage extends Component {
     state = {
-        sections: ["#Welcome", "#Features", "#How", "#Contact"],
+        show: true,
+        sections: ["#Inicio", "#Servicios", "#¿Cómo trabajamos?", "#Preguntas Frecuentes", "#Contáctanos"],
         features: [
             { title: "Servicio de Tutorías personalizadas", src: "https://firebasestorage.googleapis.com/v0/b/alexis-ruiz-asesorias.appspot.com/o/pexels-rfstudio-3825527.jpg?alt=media&token=759939aa-5be4-4f54-99ef-adbd63cd6f18" },
             { title: "Asesores para ingreso a preparatorioa y facultad ", src: "https://firebasestorage.googleapis.com/v0/b/alexis-ruiz-asesorias.appspot.com/o/pexels-thisisengineering-3862130.jpg?alt=media&token=867c50b9-74c0-498e-980a-65cec814e8ff" },
@@ -144,6 +147,13 @@ class Homepage extends Component {
             formIsValid: formIsValid
         })
     }
+    showModalHandler = () => {
+        let showCopy = { ...this.state }
+        showCopy = showCopy.show
+        this.setState({
+            show: !showCopy
+        })
+    }
     submitQuestionHandler = (event) => {
         event.preventDefault();
         const questionData = {};
@@ -160,13 +170,18 @@ class Homepage extends Component {
     }
 
     render() {
+
+
+
         return (
             <Aux>
-                <Navbar sections={this.state.sections} />
+                <Navbar show={this.state.show} clicked={this.showModalHandler} sections={this.state.sections} />
                 <WelcomeSection />
                 <Features features={this.state.features} />
                 <Advantages />
-                <Information
+                <FAQ />
+
+                <Footer
                     formIsValid={this.state.formIsValid}
                     inputField={this.state.informationQuery}
                     clicked={(event, inputId) => this.informationChangeHandler(event, inputId)}

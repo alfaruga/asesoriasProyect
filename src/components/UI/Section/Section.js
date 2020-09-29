@@ -2,7 +2,7 @@ import React from "react";
 
 const section = (props) => {
     return (
-        <section href={props.sectionName}>{props.children}
+        <section id={props.id} href={props.sectionName}>{props.children}
         </section>
     )
 }

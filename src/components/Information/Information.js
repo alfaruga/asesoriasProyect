@@ -1,6 +1,6 @@
 import React from "react";
-import Section from "../../components/UI/Section/Section";
-import Input from "../../components/UI/Input/Input";
+import Section from "../UI/Section/Section";
+import Input from "../UI/Input/Input";
 
 const information = (props) => {
     const makeArrayFromInputField = [];
@@ -10,11 +10,9 @@ const information = (props) => {
     }
     return (
         <Section>
-            <h1>
-                ¿Más información?
-            </h1>
-            <hr />
+                   
             <h4>Ingresa tu duda junto con tus datos de contacto y en seguida te atenderemos</h4>
+            <hr />
             <form onSubmit={props.send}>
                 {makeArrayFromInputField.map(elementType => {
                     return (
