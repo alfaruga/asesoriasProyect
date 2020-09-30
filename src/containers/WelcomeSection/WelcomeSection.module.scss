@@ -1,0 +1,12 @@
+@import "../../styles/variables";
+
+.WelcomeSection {
+  background-color: $darkbg;
+  color: white;
+  height: 120vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 1.5em;
+}
