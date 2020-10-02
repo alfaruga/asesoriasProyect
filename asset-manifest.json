@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/asesoriasProyect/static/css/main.c0bce3b5.chunk.css",
+    "main.js": "/asesoriasProyect/static/js/main.24bcbfb1.chunk.js",
+    "main.js.map": "/asesoriasProyect/static/js/main.24bcbfb1.chunk.js.map",
+    "runtime-main.js": "/asesoriasProyect/static/js/runtime-main.ca9654e6.js",
+    "runtime-main.js.map": "/asesoriasProyect/static/js/runtime-main.ca9654e6.js.map",
+    "static/js/2.3af1ee31.chunk.js": "/asesoriasProyect/static/js/2.3af1ee31.chunk.js",
+    "static/js/2.3af1ee31.chunk.js.map": "/asesoriasProyect/static/js/2.3af1ee31.chunk.js.map",
+    "index.html": "/asesoriasProyect/index.html",
+    "precache-manifest.9e2f1d8d8df274717cb85633059eaae6.js": "/asesoriasProyect/precache-manifest.9e2f1d8d8df274717cb85633059eaae6.js",
+    "service-worker.js": "/asesoriasProyect/service-worker.js",
+    "static/css/main.c0bce3b5.chunk.css.map": "/asesoriasProyect/static/css/main.c0bce3b5.chunk.css.map",
+    "static/js/2.3af1ee31.chunk.js.LICENSE.txt": "/asesoriasProyect/static/js/2.3af1ee31.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ca9654e6.js",
+    "static/js/2.3af1ee31.chunk.js",
+    "static/css/main.c0bce3b5.chunk.css",
+    "static/js/main.24bcbfb1.chunk.js"
+  ]
+}
