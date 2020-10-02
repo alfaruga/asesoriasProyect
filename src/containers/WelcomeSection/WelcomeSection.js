@@ -15,7 +15,7 @@ const welcomeSection = (props) => {
                         <h1>Asesorías <span>personalizadas</span></h1>
                         <h3>Te brindamos apoyo para cualquier tipo de exámenes.</h3>
                         <p>Contáctanos vía whatsapp o llámanos <span>ahora mismo</span></p>
-                        <a href="https://wa.me/528120269293" target="_blank"><FontAwesomeIcon icon={["fab", "whatsapp-square"]} /></a>
+                        <a href="https://wa.me/528120269293" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={["fab", "whatsapp-square"]} /></a>
                         <a href="tel:8120269293"><FontAwesomeIcon icon={["fas", "phone"]} /></a>
                     </div>
                 </div>

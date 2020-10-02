@@ -4,4 +4,11 @@
     @include primary-title;
     text-align: center;
   }
+  div {
+    ol {
+      li {
+        width: 80%;
+      }
+    }
+  }
 }

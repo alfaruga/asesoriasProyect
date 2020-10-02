@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './App.module.scss';
-import ReactDOM from "react-dom";
 import Homepage from "./containers/Homepage/Homepage";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";

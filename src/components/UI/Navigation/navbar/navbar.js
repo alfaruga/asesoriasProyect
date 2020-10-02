@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import NavItem from "../navItem/navItem";
-import Modal from "../../Modal/Modal"
 import classes from "./navbar.module.scss";
 
 const navbar = (props) => {

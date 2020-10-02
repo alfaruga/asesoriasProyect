@@ -1,5 +1,4 @@
 import React from "react";
-import Section from "../UI/Section/Section";
 import Input from "../UI/Input/Input";
 import classes from "./Information.module.scss";
 

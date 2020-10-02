@@ -1,8 +1,9 @@
+import classes from "./Section.module.scss";
 import React from "react";
 
 const section = (props) => {
     return (
-        <section id={props.id} href={props.sectionName}>{props.children}
+        <section className={classes.Section} id={props.id} href={props.sectionName}>{props.children}
         </section>
     )
 }

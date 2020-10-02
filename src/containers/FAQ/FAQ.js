@@ -26,7 +26,7 @@ const faq = (props) => {
                         </li><li>
                             <div>
                                 <h3>¿En que se basan sus guías de ingreso a prepa/facultad?</h3>
-                                <p>Nuestro plan de estudio está basado en las <a href="https://www.ceneval.edu.mx/examenes-nacionales-de-ingreso-exani-" target="_blank">guías oficiales del CENEVAL</a>, nuestro propósito es brindar una asesoría práctica para asegurar que el estudiante pueda resolver con facilidad los exámenes que se le aplicarán.</p>
+                                <p>Nuestro plan de estudio está basado en las <a rel="noopener noreferrer" href="https://www.ceneval.edu.mx/examenes-nacionales-de-ingreso-exani-" target="_blank">guías oficiales del CENEVAL</a>, nuestro propósito es brindar una asesoría práctica para asegurar que el estudiante pueda resolver con facilidad los exámenes que se le aplicarán.</p>
                             </div>
                         </li><li>
                             <div>

@@ -172,10 +172,10 @@ class Homepage extends Component {
 
 
     render() {
-        let content = !this.state.show ? [<WelcomeSection />, <Features features={this.state.features} />, <Advantages />, <FAQ />, <Contact formIsValid={this.state.formIsValid}
+        let content = !this.state.show ? [<WelcomeSection key="W" />, <Features key="F" features={this.state.features} />, <Advantages key="A" />, <FAQ key="FA" />, <Contact key="C" formIsValid={this.state.formIsValid}
             inputField={this.state.informationQuery}
             clicked={(event, inputId) => this.informationChangeHandler(event, inputId)}
-            send={this.submitQuestionHandler} />, <Footer />] : null
+            send={this.submitQuestionHandler} />, <Footer key="FO" />] : null
 
 
         return (
