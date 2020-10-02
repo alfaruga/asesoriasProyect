@@ -3,7 +3,7 @@ import React from "react";
 
 const navItem = (props) => {
     return (<li className={classes.Navlink}>
-        <a href={"#" + props.name}>{props.section.replace("#", "")}</a>
+        <a onClick={props.linkClicked} href={props.name}>{props.section.replace("#", "")}</a>
     </li>)
 }
 

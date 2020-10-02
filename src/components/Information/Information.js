@@ -1,6 +1,7 @@
 import React from "react";
 import Section from "../UI/Section/Section";
 import Input from "../UI/Input/Input";
+import classes from "./Information.module.scss";
 
 const information = (props) => {
     const makeArrayFromInputField = [];
@@ -9,11 +10,9 @@ const information = (props) => {
         makeArrayFromInputField.push({ id: key, config: props.inputField[key] })
     }
     return (
-        <Section>
-                   
-            <h4>Ingresa tu duda junto con tus datos de contacto y en seguida te atenderemos</h4>
-            <hr />
-            <form onSubmit={props.send}>
+        <div className={classes.Container}>
+            <h4>Solicita más información</h4>
+            <form onSubmit={props.send} className={classes.Form}>
                 {makeArrayFromInputField.map(elementType => {
                     return (
                         <Input
@@ -31,7 +30,7 @@ const information = (props) => {
                 })}
                 <button disabled={!props.formIsValid}>Enviar</button>
             </form>
-        </Section >
+        </div>
     )
 }
 

@@ -1,0 +1,49 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+.Advantages {
+  background-color: $darkbg;
+  height: 110%;
+  h1 {
+    @include primary-title;
+    color: white;
+  }
+}
+.AdvantageL {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  img {
+    width: 20%;
+    height: 60vh;
+  }
+}
+.AdvantageR {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+  img {
+    width: 20%;
+    height: 40vh;
+  }
+}
+.Description {
+  h1 {
+    color: white;
+    @include secondary-title;
+  }
+  h4 {
+    color: white;
+
+    @include text-paragraph;
+  }
+
+  text-align: center;
+  width: 30%;
+}
+@media (max-width: 650px) {
+  .Advantages {
+    display: none;
+  }
+}

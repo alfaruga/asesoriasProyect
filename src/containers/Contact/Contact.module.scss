@@ -1,0 +1,29 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.Container {
+  h1 {
+    @include primary-title;
+  }
+  div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  background-color: $darkbg;
+  color: white;
+  ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    font-size: 2em;
+    li {
+      padding: 5px 5px;
+    }
+  }
+}

@@ -1,13 +1,13 @@
+import classes from "./Especialidad.module.scss";
 import React from "react";
 
 const especialidad = (props) => {
     return (
-        <div>
+        <div className={classes.Especialidad}>
             <img src={props.src} alt="" />
             <div>
-                <h1>TEST{props.title}</h1>
-
-                {props.children}
+                <h3>{props.title}</h3>
+                <p>{props.children}</p>
             </div>
         </div>
     )

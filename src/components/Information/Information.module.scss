@@ -1,0 +1,29 @@
+@import "../../styles/mixins";
+
+h4 {
+  @include secondary-title;
+}
+.Container {
+  text-align: center;
+}
+.Form {
+  width: 100%;
+  
+  input {
+    width: 100%;
+    padding: 5px 5px;
+    margin: 5px 5px;
+  }
+  select {
+    width: 100%;
+    padding: 5px 5px;
+    margin: 5px 5px;
+  }
+  textarea {
+    width: 100%;
+    height: 15vh;
+    padding: 5px 5px;
+    margin: 5px 5px;
+    resize: none;
+  }
+}

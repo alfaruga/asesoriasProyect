@@ -7,16 +7,16 @@ import Advantages from "../Advantages/Advantages";
 import Footer from "../../components/UI/Footer/Footer";
 import FAQ from "../FAQ/FAQ";
 import axios from "../../axios-dudas";
-import Modal from "../../components/UI/Modal/Modal";
+import Contact from "../Contact/Contact";
 
 class Homepage extends Component {
     state = {
-        show: true,
+        show: false,
         sections: ["#Inicio", "#Servicios", "#¿Cómo trabajamos?", "#Preguntas Frecuentes", "#Contáctanos"],
         features: [
-            { title: "Servicio de Tutorías personalizadas", src: "https://firebasestorage.googleapis.com/v0/b/alexis-ruiz-asesorias.appspot.com/o/pexels-rfstudio-3825527.jpg?alt=media&token=759939aa-5be4-4f54-99ef-adbd63cd6f18" },
-            { title: "Asesores para ingreso a preparatorioa y facultad ", src: "https://firebasestorage.googleapis.com/v0/b/alexis-ruiz-asesorias.appspot.com/o/pexels-thisisengineering-3862130.jpg?alt=media&token=867c50b9-74c0-498e-980a-65cec814e8ff" },
-            { title: "Profesores de Inglés", src: "https://firebasestorage.googleapis.com/v0/b/alexis-ruiz-asesorias.appspot.com/o/invonto-m4n7lOvFqog-unsplash.jpg?alt=media&token=bc54f243-a174-43f8-8bff-4e36bafed920" }
+            { title: "Servicio de Tutorías personalizadas", src: "https://firebasestorage.googleapis.com/v0/b/alexis-ruiz-asesorias.appspot.com/o/personalizadas.jpg?alt=media&token=3fe62702-8c82-4a35-8951-b78b9a509518" },
+            { title: "Ingreso a preparatoria y facultad ", src: "https://firebasestorage.googleapis.com/v0/b/alexis-ruiz-asesorias.appspot.com/o/examenes.jpg?alt=media&token=4793845d-d092-4c4a-abce-5813b60d9d5a" },
+            { title: "Profesores de Inglés", src: "https://firebasestorage.googleapis.com/v0/b/alexis-ruiz-asesorias.appspot.com/o/english.jpg?alt=media&token=5136806f-ff74-46f8-bbe7-6eb4c5caf67c" }
         ],
         formIsValid: false,
         informationQuery: {
@@ -24,7 +24,7 @@ class Homepage extends Component {
                 elementType: "input",
                 elementConfig: {
                     type: "text",
-                    placeholder: "Ejemplo Sr. (Sr.a) Pérez"
+                    placeholder: "Nombre y Apellido"
                 }
                 , value: "",
                 validation: {
@@ -100,7 +100,11 @@ class Homepage extends Component {
         }
 
     }
-
+    linkClickHandler = () => {
+        this.setState({
+            show: false
+        })
+    }
     checkValidation(value, rules) {
         let isValid = true;
 
@@ -148,11 +152,10 @@ class Homepage extends Component {
         })
     }
     showModalHandler = () => {
-        let showCopy = { ...this.state }
-        showCopy = showCopy.show
-        this.setState({
-            show: !showCopy
-        })
+        let toggle = { ...this.state }
+        toggle = toggle.show;
+
+        this.setState({ show: !toggle })
     }
     submitQuestionHandler = (event) => {
         event.preventDefault();
@@ -169,23 +172,18 @@ class Homepage extends Component {
             })
     }
 
-    render() {
 
+    render() {
+        let content = !this.state.show ? [<WelcomeSection />, <Features features={this.state.features} />, <Advantages />, <FAQ />, <Contact formIsValid={this.state.formIsValid}
+            inputField={this.state.informationQuery}
+            clicked={(event, inputId) => this.informationChangeHandler(event, inputId)}
+            send={this.submitQuestionHandler} />, <Footer />] : null
 
 
         return (
             <Aux>
-                <Navbar show={this.state.show} clicked={this.showModalHandler} sections={this.state.sections} />
-                <WelcomeSection />
-                <Features features={this.state.features} />
-                <Advantages />
-                <FAQ />
-
-                <Footer
-                    formIsValid={this.state.formIsValid}
-                    inputField={this.state.informationQuery}
-                    clicked={(event, inputId) => this.informationChangeHandler(event, inputId)}
-                    send={this.submitQuestionHandler} />
+                <Navbar show={this.state.show} linkClicked={this.linkClickHandler} clicked={this.showModalHandler} sections={this.state.sections} />
+                {content}
             </Aux>
         )
     }

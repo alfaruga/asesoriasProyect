@@ -1,12 +1,54 @@
 @import "../../styles/variables";
 
 .WelcomeSection {
+  position: relative;
+  span {
+    color: $secondary-color;
+    font-style: italic;
+  }
+  .Video {
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+  }
+  .Info {
+    position: absolute;
+    z-index: 2;
+    background-color: $transparentbg;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    a:hover {
+      color: $secondary-color;
+    }
+    div {
+      h1 {
+        font-size: 1.8em;
+      }
+      h3 {
+        font-size: 0.8em;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+        padding: 0 5px;
+        font-size: 2em;
+      }
+    }
+  }
   background-color: $darkbg;
   color: white;
   height: 120vh;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
   font-size: 1.5em;
+}
+@media (max-width: 650px) {
+  .Video {
+    display: none;
+  }
 }

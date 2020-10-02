@@ -1,6 +1,7 @@
 import React from "react";
 import Section from "../../components/UI/Section/Section";
 import Especialidad from "../../components/Especialidad/Especialidad";
+import classes from "./Features.module.scss";
 
 const Features = (props) => {
     /*  
@@ -19,16 +20,18 @@ const Features = (props) => {
              }
          }
      } */
-    const descripciones = ["Repaso de cálculo, química, física, programación, inglés y más.",
-        "Asesorías para ingreso a preparatoria y facultad, basadas en los exámenes de ADMISIÓN y DIAGNÓSTICO del CENEVAL.",
+    const descripciones = ["Repaso y apoyo con tareas de cálculo, química, física, programación, inglés y más.",
+        "Asesorías basadas en los exámenes de admisión y diagnóstico del CENEVAL.",
         "Asesorías en el idioma inglés por profesores certificados."];
 
     return (
-        <Section id={"features"}>
-            <h1>Nuestras especialidades</h1>
-            {props.features.map((especialidad, index) => {
-                return (<Especialidad key={index} {...especialidad} >{descripciones[index]}</Especialidad>)
-            })}
+        <Section id={"Servicios"}>
+            <div className={classes.Container}>
+                <h1>Nuestras especialidades<hr /></h1>
+                {props.features.map((especialidad, index) => {
+                    return (<Especialidad key={index} {...especialidad} >{descripciones[index]}</Especialidad>)
+                })}
+            </div>
         </Section>
     )
 }

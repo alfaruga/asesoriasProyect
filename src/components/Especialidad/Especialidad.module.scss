@@ -1,0 +1,62 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.Especialidad {
+  img {
+    width: 100%;
+    height: 50vh;
+    display: block;
+  }
+  display: flex;
+  flex-direction: column;
+  img {
+    grid-area: img;
+  }
+  div {
+    position: relative;
+    h3 {
+      margin: 0;
+      @include secondary-title;
+    }
+    p {
+      margin: 0;
+      position: absolute;
+      bottom: 0;
+      @include text-paragraph;
+    }
+    height: 30vh;
+    grid-area: text;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 650px) {
+  .Especialidad {
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 50%;
+      height: 30%;
+    }
+    div {
+      margin: 0;
+      padding: 0;
+      position: static;
+      justify-content: center;
+      align-items: center;
+      h3 {
+        @include secondary-title;
+        text-align: center;
+        padding: 0 15px;
+      }
+      p {
+        position: static;
+        text-align: center;
+        padding: 0 15px;
+        @include text-paragraph;
+      }
+    }
+  }
+}
