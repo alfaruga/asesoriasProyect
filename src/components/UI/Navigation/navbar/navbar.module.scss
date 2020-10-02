@@ -46,6 +46,9 @@ p {
 @media (max-width: 650px) {
   .Icon {
     display: inline;
+    position: fixed;
+    top: 0;
+    left: 0;
     font-size: 2em;
     margin-left: 15px;
     z-index: 4;
@@ -56,8 +59,13 @@ p {
     right: -100vw;
   }
   .Logos {
+    display: initial;
+    position: fixed;
     div {
-      right: 0;
+      width: auto;
+      img {
+        margin: auto;
+      }
       p {
         display: none;
       }

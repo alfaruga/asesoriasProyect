@@ -27,3 +27,13 @@
     }
   }
 }
+@media (max-width: 650px) {
+  .Container {
+    ul {
+      margin: 0;
+    }
+    div {
+      flex-direction: column;
+    }
+  }
+}

@@ -12,7 +12,7 @@ const advantages = () => {
                     <div className={classes.Description}>
                         <h1>Atención personalizada</h1>
                         <h4>Sabemos que cada alumno aprende a su ritmo, por lo cual nos empeñamos a dar una excelente
-                    asesoría de manera individual que se adapte a tus manera de aprender y personalidad.</h4>
+                    asesoría de manera individual que se adapte a tu forma de aprender y personalidad.</h4>
                     </div>
                 </div>
                 <div className={classes.AdvantageR}>

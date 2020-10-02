@@ -89,8 +89,6 @@ class Homepage extends Component {
                 }
                 , value: "",
                 validation: {
-                    required: true,
-                    minLength: 1,
                     maxLength: 500
                 },
                 valid: false,
