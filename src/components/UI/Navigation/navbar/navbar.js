@@ -19,7 +19,7 @@ const navbar = (props) => {
                     src="https://firebasestorage.googleapis.com/v0/b/alexis-ruiz-asesorias.appspot.com/o/R.jpg?alt=media&token=2f4c2ff6-cd6d-48da-bfb0-e885971ce188"
                     width="100px"
                     height="100px"
-                /><p><strong>Asesorías</strong> R<sup>3</sup></p>
+                /><p><strong>R&R</strong> Asesorías</p>
             </div>
             <ul className={classesToList.join(" ")}>
                 {props.sections.map(section => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.scss';
+import classes from './App.module.scss';
 import ReactDOM from "react-dom";
 import Homepage from "./containers/Homepage/Homepage";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -12,7 +12,7 @@ library.add(fab, fas);
 function App() {
   return (
     <div className="App">
-      <Homepage />
+      <Homepage className={classes.Homepage} />
     </div>
   );
 }
